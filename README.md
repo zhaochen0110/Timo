@@ -5,12 +5,11 @@ This repo contains the code, data, and models for "[TIMO: Towards Better Tempora
  🔥 🔥 🔥 Check out our <a href = "https://tiger-ai-lab.github.io/MAmmoTH/">[Project Page]</a> for more results and analysis!
 </div>
 
-### Datasets and Models
-Our dataset and models are all available at Huggingface.
+### Models
+Our models are all available at Huggingface:
 
-- **Dataset**: 🤗 [MathInstruct Dataset](https://huggingface.co/datasets/TIGER-Lab/MathInstruct)
-
-- **Model**: 🌱 [TIMO-7B](https://huggingface.co/Warrieryes/timo-7b-hf); [TIMO-13B](https://huggingface.co/Warrieryes/timo-13b-hf)
+- [TIMO-7B](https://huggingface.co/Warrieryes/timo-7b-hf)
+- [TIMO-13B](https://huggingface.co/Warrieryes/timo-13b-hf)
 
 ## Highlights
 We demonstrate the main results of TIMO as follows:
