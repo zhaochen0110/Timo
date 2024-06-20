@@ -69,19 +69,14 @@ To play with our model, run:
 from transformers import pipeline
 pipeline = pipeline("text-generation", "Warrieryes/timo-7b-hf")
 
-alpaca_template = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n### Instruction:\n{query}\n\n### Response:"
+template = '''Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{query}\n\n### Response:'''
 
-query = "Janet's ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?"
+query = "What is 08:32 AM - 04:28?\n (A) 6:10 AM\n (B) 2:49 AM\n (C) 6:17 AM\n (D) 4:04 AM"
 
-### By default, MAmmoTH will output the Chain-of-thought (CoT) rationale
-rationale_prefix = ""
-
-### You can let MAmmoTH output Program-of-thought (PoT) rationale by simply adding
-rationale_prefix = " Let's write a program."
-
-input = alpaca_template.format(query = query + rationale_prefix)
+input = template.format(query=query)
 
 output = pipeline(input)[0]['generated_text']
+
 print(output)
 ```
 
@@ -90,14 +85,13 @@ print(output)
 To replicate the experimental results in our paper, run:
 
 ```bash
-
+python inference.py \
+    --model_path $model_path \
+    --data_path $data_path \
+    --excel_folder $excel_folder \
+    --output_path $output_path 
 ```
 
-If you want to run the evaluation for the general task, use the following bash script for [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness).
-
-```bash
-### 
-```
 
 ### **Self-critic Temporal Preference Generation**
 
@@ -109,37 +103,17 @@ python generate.py \
     --generate True \
     --train_data_path $train_data_path \
     --score True \
-    --generate_data_path $generate_data_path \
     --save_path $save_path
 ```
 
 ## Temporal direct preference optimization
 
 After generating preference pairs, we use Direct Preference Optimization (DPO) to train the model:
-```
-deepspeed --include localhost:${DEVICES} --master_port 29502 dpo_train.py \
-    --model_name_or_path ${MODELPATH} \
-    --json_path ${JSONPATH} \
-    --output_dir ${OUTPUTPATH}/${RUNNAME} \
-    --num_train_epochs ${DPOEPOCH} \
-    --beta 0.1 \
-    --per_device_train_batch_size ${BSZPERDEV} \
-    --per_device_eval_batch_size 1 \
-    --gradient_accumulation_steps ${GRADACC} \
-    --evaluation_strategy "no" \
-    --save_strategy "steps" \
-    --save_steps 10000 \
-    --save_total_limit 1 \
-    --learning_rate 5e-7 \
-    --warmup_ratio 0.1 \
-    --lr_scheduler_type "linear" \
-    --logging_steps 1 \
-    --model_max_length 2048 \
-    --report_to "wandb" \
-    --run_name ${RUNNAME} \
-    --bf16 True \
-    --gradient_checkpointing True \
-    --deepspeed ./ds_config/stage3_no_offloading_accelerate.json
+```bash
+python tdpo.py \
+    --model_name_or_path $model_name_or_path \
+    --json_path $json_path \
+    --output_dir $output_dir 
 ```
 
 ## 📜 License
@@ -158,3 +132,4 @@ Please cite our paper if you use our data, model or code. Please also kindly cit
 ```
 
 ```
+
