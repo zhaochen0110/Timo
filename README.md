@@ -1,9 +1,5 @@
 # **TIMO** 🌱
-This repo contains the code, data, and models for "[TIMO: Towards Better Temporal Reasoning for Language Models](https://arxiv.org/pdf/2309.05653.pdf)”.
-
-<div align="center">
- 🔥 🔥 🔥 Check out our <a href = "https://tiger-ai-lab.github.io/MAmmoTH/">[Project Page]</a> for more results and analysis!
-</div>
+This repo contains the code, data, and models for "[TIMO: Towards Better Temporal Reasoning for Language Models]()”.
 
 ### Models
 Our models are all available at Huggingface:
