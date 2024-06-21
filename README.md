@@ -1,5 +1,5 @@
 # **TIMO** 🌱
-This repo contains the code, data, and models for "[TIMO: Towards Better Temporal Reasoning for Language Models]()”.
+This repo contains the code, data, and models for "[TIMO: Towards Better Temporal Reasoning for Language Models](https://arxiv.org/pdf/2406.14192)”.
 
 ### Models
 Our models are all available at Huggingface:
@@ -126,6 +126,12 @@ This project is partly based on the work done in **[MAmmoTH](https://github.com/
 Please cite our paper if you use our data, model or code. Please also kindly cite the original dataset papers. 
 
 ```
-
+@misc{su2024timo,
+      title={Timo: Towards Better Temporal Reasoning for Language Models}, 
+      author={Zhaochen Su and Jun Zhang and Tong Zhu and Xiaoye Qu and Juntao Li and Min Zhang and Yu Cheng},
+      year={2024},
+      eprint={2406.14192},
+      archivePrefix={arXiv}
+}
 ```
 
