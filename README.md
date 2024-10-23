@@ -1,6 +1,6 @@
 # **TIMO** 🌱
 
-This repository contains the code, data, and models for the paper "[TIMO: Towards Better Temporal Reasoning for Language Models](https://arxiv.org/pdf/2406.14192)".
+This repository contains the code, data, and models for the paper "[TIMO: Towards Better Temporal Reasoning for Language Models](https://arxiv.org/pdf/2406.14192)", accepted at COLM 2024.
 
 ## **Table of Contents**
 
@@ -70,7 +70,7 @@ Clone this repository and install the required dependencies:
 git clone https://github.com/zhaochen0110/Timo.git
 cd Timo
 pip install -r requirements.txt
-
+```
 
 ## 🛠️ **Training and Inference**
 
